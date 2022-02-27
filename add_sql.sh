@@ -9,19 +9,19 @@ while IFS= read -r line
 do
   if [[ $line == DB_HOST* ]]
   then
-    DB_HOST=$(cut -d "=" -f2- <<< $line)
+    DB_HOST=$(cut -d "=" -f2- | tr -d \' <<< $line)
   elif [[ $line == DB_NAME* ]]
   then
-    DB_NAME=$(cut -d "=" -f2- <<< $line)
+    DB_NAME=$(cut -d "=" -f2- | tr -d \' <<< $line)
   elif [[ $line == DB_USER* ]]
   then
-    DB_USER=$(cut -d "=" -f2- <<< $line)
+    DB_USER=$(cut -d "=" -f2- | tr -d \' <<< $line)
   elif [[ $line == DB_PORT* ]]
   then
-    DB_PORT=$(cut -d "=" -f2- <<< $line)
+    DB_PORT=$(cut -d "=" -f2- | tr -d \' <<< $line)
   elif [[ $line == DB_PASSWORD* ]]
   then
-    DB_PASSWORD=$(cut -d "=" -f2- <<< $line)
+    DB_PASSWORD=$(cut -d "=" -f2- | tr -d \' <<< $line)
   fi
 done < ".env"
 
