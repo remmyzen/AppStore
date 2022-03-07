@@ -15,6 +15,8 @@ def index(request):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customers ORDER BY customerid")
         customers = cursor.fetchall()
+    
+    print(customers[0])
 
     result_dict = {'records': customers}
 
